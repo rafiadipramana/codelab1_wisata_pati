@@ -1,6 +1,9 @@
-# wisata_pati
+# Codelab 1 - Wisata Pati
+# Nama : Rafi Adi Pramana
+# NIM : 3.34.21.2.20
+# Kelas : IK-2C
 
-A new Flutter project.
+![33421220_IK-2C_Rafi Adi Pramana_Screenshot Codelab 1](https://user-images.githubusercontent.com/88870768/200129951-dc27304e-4057-4bba-8303-301fa939156b.png)
 
 ## Getting Started
 
