@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wisata_pati/model/tourism_place.dart';
 
 class DetailScreen extends StatelessWidget {
-  DetailScreen({Key? key}) : super(key: key);
+  final TourismPlace place;
+  DetailScreen({Key? key, required this.place}) : super(key: key);
 
   var informationTextStyle = const TextStyle(fontFamily: 'Poppins');
 
@@ -12,11 +14,38 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Image.asset('images/grenjengan_sewu.jpg'),
+            Stack(
+              children: [
+                Image.asset(place.imageAsset1),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }
+                          ),
+                        ),
+                        const FavoriteButton()
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
             Container(
               margin: const EdgeInsets.only(top: 16.0),
-              child: const Text(
-                'Grenjengan Sewu',
+              child: Text(
+                place.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
@@ -34,7 +63,7 @@ class DetailScreen extends StatelessWidget {
                       const Icon(Icons.calendar_today),
                       const SizedBox(height: 8.0),
                       Text(
-                        'Open Everyday',
+                        place.openDays,
                         style: informationTextStyle,
                       ),
                     ],
@@ -44,7 +73,7 @@ class DetailScreen extends StatelessWidget {
                       const Icon(Icons.access_time),
                       const SizedBox(height: 8.0),
                       Text(
-                        '09:00 - 20:00',
+                        place.openTime,
                         style: informationTextStyle,
                       ),
                     ],
@@ -54,7 +83,7 @@ class DetailScreen extends StatelessWidget {
                       const Icon(Icons.monetization_on),
                       const SizedBox(height: 8.0),
                       Text(
-                        'Rp 20.000',
+                        place.ticketPrice,
                         style: informationTextStyle,
                       ),
                     ],
@@ -64,8 +93,8 @@ class DetailScreen extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                'Grenjengan Sewu adalah salah satu objek wisata alam yang terletak di Desa Jrahi, Kecamatan Gunungwungkal, Kabupaten Pati, Provinsi Jawa Tengah. Air terjun satu ini menyuguhkan pemandangan alam yang luar biasa memanjakan mata para pengunjungnya. Anda bisa merasakan segarnya air yang turun dari air terjun satu ini.',
+              child: Text(
+                place.desription,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0),
               ),
@@ -74,37 +103,46 @@ class DetailScreen extends StatelessWidget {
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Padding(
+                children: place.imageAssets2.map((url) {
+                  return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('images/grenjengan_sewu1.jpg'
-                      ),
+                      child: Image.asset(url),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('images/grenjengan_sewu2.jpg'
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('images/grenjengan_sewu3.jpg'
-                      ),
-                    ),
-                  ),
-                ],
+                  );
+                }).toList()
               ),
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  const FavoriteButton({Key? key}) : super(key: key);
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        isFavorite ? Icons.favorite : Icons.favorite_border,
+        color: Colors.red,
+      ),
+      onPressed: () {
+        setState(() {
+          isFavorite = !isFavorite;
+        });
+      },
     );
   }
 }
