@@ -7,7 +7,13 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wisata Pati'),
+        centerTitle: true,
+        title: const Text(
+          'Wisata Pati',
+          style: TextStyle(
+            fontFamily: 'Inter'
+          ),
+        ),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
@@ -19,12 +25,21 @@ class MainScreen extends StatelessWidget {
               }));
             },
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
                     flex: 1,
-                    child: Image.asset(place.imageAsset1)
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(place.imageAsset1)
+                      ),
+                    )
                   ),
                   Expanded(
                     flex: 2,
@@ -36,12 +51,20 @@ class MainScreen extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             place.name,
-                            style: const TextStyle(fontSize: 16.0),
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Inter'
+                            ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
-                          Text(place.goal)
+                          Text(
+                            place.goal,
+                            style: TextStyle(
+                              fontFamily: 'Poppins'
+                            ),
+                          )
                         ],
                       ),
                     ),
