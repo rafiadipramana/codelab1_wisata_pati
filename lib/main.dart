@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wisata Pati',
+      title: 'Tempat Wisata Pati',
       theme: ThemeData(),
       home: MainScreen(),
       debugShowCheckedModeBanner: false,
