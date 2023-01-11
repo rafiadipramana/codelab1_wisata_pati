@@ -3,7 +3,9 @@
 # NIM : 3.34.21.2.20
 # Kelas : IK-2C
 
-![33421220_IK-2C_Rafi Adi Pramana_Screenshot Codelab 1](https://user-images.githubusercontent.com/88870768/200129951-dc27304e-4057-4bba-8303-301fa939156b.png)
+![home_page](https://user-images.githubusercontent.com/88870768/211737727-bc9d2f60-8cfb-4e24-83a4-246690539ced.png)
+![detail_page](https://user-images.githubusercontent.com/88870768/211737814-b97efe45-10bc-463d-bb59-275a54dd5779.png)
+![detail_page1](https://user-images.githubusercontent.com/88870768/211737839-fafb7292-25af-4496-840d-b0056e4cefd1.png)
 
 ## Getting Started
 
